@@ -173,86 +173,86 @@ Actor 只负责生成动作，不在第一阶段训练或更新。
 
 ## 5. 增量收益定义
 
-设当前 GUI 状态为 \(s\)，用户任务为 \(g\)，操作历史为 \(h\)。
+设当前 GUI 状态为 $s$，用户任务为 $g$，操作历史为 $h$。
 
 四条路径执行后得到结果分数：
 
-\[
+$$
 R_{\text{direct}},\quad
 R_{\text{obs}},\quad
 R_{\text{reason}},\quad
 R_{\text{wait}}
-\]
+$$
 
 第一阶段可以使用二值结果：
 
-\[
+$$
 R =
 \begin{cases}
 1, & \text{动作成功或进入预期状态}\\
 0, & \text{动作失败}
 \end{cases}
-\]
+$$
 
 额外观测的增量收益：
 
-\[
+$$
 \Delta_{\text{obs}} =
 R_{\text{obs}}-R_{\text{direct}}
-\]
+$$
 
 追加推理的增量收益：
 
-\[
+$$
 \Delta_{\text{reason}} =
 R_{\text{reason}}-R_{\text{direct}}
-\]
+$$
 
 扣除等待影响后的净收益：
 
-\[
+$$
 \Delta_{\text{obs-net}} =
 R_{\text{obs}}-R_{\text{wait}}
-\]
+$$
 
-\[
+$$
 \Delta_{\text{reason-net}} =
 R_{\text{reason}}-R_{\text{wait}}
-\]
+$$
 
 ## 6. 价值预测与自适应执行
 
 训练轻量收益预测器：
 
-\[
+$$
 \hat{\Delta}_{p} =
 f_{\phi}(s,g,h,a,p)
-\]
+$$
 
 其中：
 
-- \(a\)：Actor 初始动作；
-- \(p\)：候选路径；
-- \(\hat{\Delta}_{p}\)：预测路径相对 direct 的增量收益。
+- $a$：Actor 初始动作；
+- $p$：候选路径；
+- $\hat{\Delta}_{p}$：预测路径相对 direct 的增量收益。
 
 也可以将问题转化为正收益分类：
 
-\[
+$$
 P(\Delta_{\text{obs}}>0),\qquad
 P(\Delta_{\text{reason}}>0)
-\]
+$$
 
 最终根据收益和成本选择路径：
 
-\[
+$$
 p^* =
 \arg\max_p
 \left(
 \hat{\Delta}_p-\lambda Cost(p)
 \right)
-\]
+$$
 
-其中 \(Cost(p)\) 是路径的额外时间、调用或交互成本，\(\lambda\) 是成本权重。
+其中 $Cost(p)$ 是路径的额外时间、调用或交互成本，$\lambda$ 是成本权重。
 
 ## 7. 实验设计
 
@@ -324,9 +324,9 @@ wait 结果
 
 成本收益：
 
-\[
+$$
 Utility = Success-\lambda Cost
-\]
+$$
 
 报告 Success-Cost Curve、Risk-Cost Curve、Budget-Success Curve 和 wait-adjusted utility。
 
