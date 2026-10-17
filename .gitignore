@@ -32,6 +32,7 @@ logs/
 
 # Temporary research files
 work/
+outputs/
 
 # IDE and operating system
 .vscode/

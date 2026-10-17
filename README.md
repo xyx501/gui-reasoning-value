@@ -34,8 +34,7 @@ refine-logs/
   EXPERIMENT_TRACKER.md  Experiment tracker
   EXPERIMENT_RESULTS.md  Initial synthetic results
 
-outputs/
-  gui_agent_action_reliability_outline.docx
+IDEA_AND_LOGIC_CHAIN.md   Current research idea and logic chain
 ```
 
 Generated pilot outputs and temporary research files are intentionally excluded from version control.
